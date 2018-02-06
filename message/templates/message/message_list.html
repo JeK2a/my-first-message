@@ -1,17 +1,30 @@
+{% load staticfiles %}
 <html>
 <head>
-    <title>Django Girls blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    <title>Список непрочитанных сообщений</title>
 </head>
 <body>
-<div>
-    <h1><a href="/">Django Girls Blog</a></h1>
+<div class="page-header">
+    <h1><a href="/">Список непрочитанных сообщений</a></h1>
 </div>
 
-{% for message in messages %}
-    <div>
-        <p>published: {{ message.published_date }}</p>
-        <p>{{ message.text|linebreaksbr }}</p>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for message in messages %}
+                <div class="message">
+                    <div class="date">
+                        <p>Опубликовано: {{ message.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ message.text|linebreaksbr }}</a></h1>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-{% endfor %}
+</div>
 </body>
 </html>
